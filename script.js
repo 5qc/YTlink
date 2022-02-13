@@ -25,13 +25,13 @@ window.onload = function() {
                     yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}" target="_blank">${yt.innerHTML}</a>`
                 }
             } else {
-                if (yt.getAttribute("section") === "videos" || "video") {
+                if (yt.getAttribute("section") === "videos" || yt.getAttribute("section") === "video") {
                     if (yt.innerHTML === "") {
                         yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}/videos" target="_blank">${yt.getAttribute("user")}</a>`
                     } else {
                         yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}/videos" target="_blank">${yt.innerHTML}</a>`
                     }
-                } else if (yt.getAttribute("section") === "playlists" || "playlist") {
+                } else if (yt.getAttribute("section") === "playlists" || yt.getAttribute("section") === "playlist") {
                     if (yt.innerHTML === "") {
                         yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}/playlists" target="_blank">${yt.getAttribute("user")}</a>`
                     } else {
@@ -55,7 +55,7 @@ window.onload = function() {
                     } else {
                         yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}/store" target="_blank">${yt.innerHTML}</a>`
                     }
-                } else if (yt.getAttribute("section") === "channels" || "channel") {
+                } else if (yt.getAttribute("section") === "channels" || yt.getAttribute("section") === "channel") {
                     if (yt.innerHTML === "") {
                         yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}/channels" target="_blank">${yt.getAttribute("user")}</a>`
                     } else {
@@ -77,13 +77,13 @@ window.onload = function() {
                     yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}" target="_blank">${yt.innerHTML}</a>`
                 }
             } else {
-                if (yt.getAttribute("section") === "videos" || "video") {
+                if (yt.getAttribute("section") === "videos" || yt.getAttribute("section") === "video") {
                     if (yt.innerHTML === "") {
                         yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}/videos" target="_blank">${yt.getAttribute("channel")}</a>`
                     } else {
                         yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}/videos" target="_blank">${yt.innerHTML}</a>`
                     }
-                } else if (yt.getAttribute("section") === "playlists" || "playlist") {
+                } else if (yt.getAttribute("section") === "playlists" || yt.getAttribute("section") === "playlist") {
                     if (yt.innerHTML === "") {
                         yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}/playlists" target="_blank">${yt.getAttribute("channel")}</a>`
                     } else {
@@ -107,7 +107,7 @@ window.onload = function() {
                     } else {
                         yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}/store" target="_blank">${yt.innerHTML}</a>`
                     }
-                } else if (yt.getAttribute("section") === "channels" || "channel") {
+                } else if (yt.getAttribute("section") === "channels" || yt.getAttribute("section") === "channel") {
                     if (yt.innerHTML === "") {
                         yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}/channels" target="_blank">${yt.getAttribute("channel")}</a>`
                     } else {
