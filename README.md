@@ -8,6 +8,9 @@
 - `<yt user="YouTube" section="about"></yt>` will produce [YouTube](//youtube.com/user/YouTube/about).
 - `<yt video="jNQXAC9IVRw"></yt>` will produce [jNQXAC9IVRw](//youtube.com/watch?v=jNQXAC9IVRw).
 
+### You can also do aliases:
+- `<yt user="mrbeast6000">The MrBeast Channel</yt>` will produce [The MrBeast Channel](//youtube.com/user/mrbeast6000)
+
 ## Components
 ### User
 The **user** attribute is used for YouTube channel URLs that use */user/*.
@@ -24,6 +27,7 @@ The **section** attribute is used to go to a specific section on the YouTube cha
 - `playlists`/`playlist`
 - `community`
 - `discussion`
+- `store`
 - `channels`/`channel`
 - `about`
 
