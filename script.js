@@ -1,67 +1,74 @@
-$(document).ready(function() {
-  if ($("yt").attr("user") !== undefined) {
-    if ($("yt").attr("section") == "videos" || "video") {
-      $("yt").html("<a href='//youtube.com/user/" + $("yt").attr("user") + "/videos'>" + $("yt").attr("user") + "</a>")
-    } else if ($("yt").attr("section") == "playlists" || "playlist") {
-      $("yt").html("<a href='//youtube.com/user/" + $("yt").attr("user") + "/playlists'>" + $("yt").attr("user") + "</a>")
-    } else if ($("yt").attr("section") == "community") {
-      $("yt").html("<a href='//youtube.com/user/" + $("yt").attr("user") + "/community'>" + $("yt").attr("user") + "</a>")
-    } else if ($("yt").attr("section") == "discussion") {
-      $("yt").html("<a href='//youtube.com/user/" + $("yt").attr("user") + "/discussion'>" + $("yt").attr("user") + "</a>")
-    } else if ($("yt").attr("section") == "channels" || "channel") {
-      $("yt").html("<a href='//youtube.com/user/" + $("yt").attr("user") + "/channels'>" + $("yt").attr("user") + "</a>")
-    } else if ($("yt").attr("section") == "about") {
-      $("yt").html("<a href='//youtube.com/user/" + $("yt").attr("user") + "/about'>" + $("yt").attr("user") + "</a>")
-    } else {
-      $("yt").html("<a href='//youtube.com/user/" + $("yt").attr("user") + "'>" + $("yt").attr("user") + "</a>")
+const styling = `<style type="text/css">@import url("//fonts.googleapis.com/css2?family=YouTube+Sans&display=swap");yt-error{font-family:YouTube Sans,sans-serif;color:red}yt-error-logo{font-weight:bold}</style>`
+const sections = ["featured", "videos", "playlists", "community", "discussion", "store", "channels", "about"]
+
+window.onload = function() {
+    // Some Functions
+    function error(content) {
+        return `<yt-error><yt-error-logo><bracket>[</bracket>YTlink<bracket>]</bracket></yt-error-logo> ${content}</yt-error>`
     }
-  } else if ($("yt").attr("channel") !== undefined) {
-    if ($("yt").attr("section") == "videos" || "video") {
-      $("yt").html("<a href='//youtube.com/channel/" + $("yt").attr("channel") + "/videos'>" + $("yt").attr("channel") + "</a>")
-    } else if ($("yt").attr("section") == "playlists" || "playlist") {
-      $("yt").html("<a href='//youtube.com/channel/" + $("yt").attr("channel") + "/playlists'>" + $("yt").attr("channel") + "</a>")
-    } else if ($("yt").attr("section") == "community") {
-      $("yt").html("<a href='//youtube.com/channel/" + $("yt").attr("channel") + "/community'>" + $("yt").attr("channel") + "</a>")
-    } else if ($("yt").attr("section") == "discussion") {
-      $("yt").html("<a href='//youtube.com/channel/" + $("yt").attr("channel") + "/discussion'>" + $("yt").attr("channel") + "</a>")
-    } else if ($("yt").attr("section") == "channels" || "channel") {
-      $("yt").html("<a href='//youtube.com/channel/" + $("yt").attr("channel") + "/channels'>" + $("yt").attr("channel") + "</a>")
-    } else if ($("yt").attr("section") == "about") {
-      $("yt").html("<a href='//youtube.com/channel/" + $("yt").attr("channel") + "/about'>" + $("yt").attr("channel") + "</a>")
-    } else {
-      $("yt").html("<a href='//youtube.com/channel/" + $("yt").attr("channel") + "'>" + $("yt").attr("channel") + "</a>")
+    
+    // Some Variables
+    ytElement = "yt"
+
+    // Inject YTlink CSS
+    document.head.insertAdjacentHTML("beforeend", styling)
+
+    // Main CSS
+    for (let i = 0; i < document.querySelectorAll(ytElement).length; i++) {
+        var yt = document.querySelectorAll(ytElement)[i]
+
+        if (yt.getAttribute("user") !== null) {
+            if (yt.getAttribute("section") === null) {
+                if (yt.innerHTML === "") {
+                    yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}" target="_blank">${yt.getAttribute("user")}</a>`
+                } else {
+                    yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}" target="_blank">${yt.innerHTML}</a>`
+                }
+            } else {
+                if (yt.innerHTML === "") {
+                    yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}/${yt.getAttribute("section")}" target="_blank">${yt.getAttribute("user")}</a>`
+                } else {
+                    yt.innerHTML = `<a href="//youtube.com/user/${yt.getAttribute("user")}/${yt.getAttribute("section")}" target="_blank">${yt.innerHTML}</a>`
+                }
+            }
+        } else if (yt.getAttribute("channel") !== null) {
+            if (yt.getAttribute("section") === null) {
+                if (yt.innerHTML === "") {
+                    yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}" target="_blank">${yt.getAttribute("channel")}</a>`
+                } else {
+                    yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}" target="_blank">${yt.innerHTML}</a>`
+                }
+            } else {
+                if (yt.innerHTML === "") {
+                    yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}/${yt.getAttribute("section")}" target="_blank">${yt.getAttribute("channel")}</a>`
+                } else {
+                    yt.innerHTML = `<a href="//youtube.com/channel/${yt.getAttribute("channel")}/${yt.getAttribute("section")}" target="_blank">${yt.innerHTML}</a>`
+                }
+            }
+        } else if (yt.getAttribute("c") !== null) {
+            if (yt.getAttribute("section") === null) {
+                if (yt.innerHTML === "") {
+                    yt.innerHTML = `<a href="//youtube.com/c/${yt.getAttribute("c")}" target="_blank">${yt.getAttribute("c")}</a>`
+                } else {
+                    yt.innerHTML = `<a href="//youtube.com/c/${yt.getAttribute("c")}" target="_blank">${yt.innerHTML}</a>`
+                }
+            } else {
+                if (yt.innerHTML === "") {
+                    yt.innerHTML = `<a href="//youtube.com/c/${yt.getAttribute("c")}/${yt.getAttribute("section")}" target="_blank">${yt.getAttribute("c")}</a>`
+                } else {
+                    yt.innerHTML = `<a href="//youtube.com/c/${yt.getAttribute("c")}/${yt.getAttribute("section")}" target="_blank">${yt.innerHTML}</a>`
+                }
+            }
+        } else if (yt.getAttribute("video") !== null) {
+            if (yt.getAttribute("section") === null) {
+                if (yt.innerHTML === "") {
+                    yt.innerHTML = `<a href="//youtube.com/watch?v=${yt.getAttribute("video")}" target="_blank">${yt.getAttribute("video")}</a>`
+                } else {
+                    yt.innerHTML = `<a href="//youtube.com/watch?v=${yt.getAttribute("video")}" target="_blank">${yt.innerHTML}</a>`
+                }
+            } else {
+                yt.innerHTML = error("Videos do not have sections!")
+            }
+        }
     }
-  } else if ($("yt").attr("c") !== undefined) {
-    if ($("yt").attr("section") == "videos" || "video") {
-      $("yt").html("<a href='//youtube.com/c/" + $("yt").attr("c") + "/videos'>" + $("yt").attr("c") + "</a>")
-    } else if ($("yt").attr("section") == "playlists" || "playlist") {
-      $("yt").html("<a href='//youtube.com/c/" + $("yt").attr("c") + "/playlists'>" + $("yt").attr("c") + "</a>")
-    } else if ($("yt").attr("section") == "community") {
-      $("yt").html("<a href='//youtube.com/c/" + $("yt").attr("c") + "/community'>" + $("yt").attr("c") + "</a>")
-    } else if ($("yt").attr("section") == "discussion") {
-      $("yt").html("<a href='//youtube.com/c/" + $("yt").attr("c") + "/discussion'>" + $("yt").attr("c") + "</a>")
-    } else if ($("yt").attr("section") == "channels" || "channel") {
-      $("yt").html("<a href='//youtube.com/c/" + $("yt").attr("c") + "/channels'>" + $("yt").attr("c") + "</a>")
-    } else if ($("yt").attr("section") == "about") {
-      $("yt").html("<a href='//youtube.com/c/" + $("yt").attr("c") + "/about'>" + $("yt").attr("c") + "</a>")
-    } else {
-      $("yt").html("<a href='//youtube.com/c/" + $("yt").attr("c") + "'>" + $("yt").attr("c") + "</a>")
-    }
-  } else {
-    $("yt").html("<yt-error>Invalid attribute. Has to be either \"user\", \"channel\", or \"c\".</yt-error>")
-  }
-  
-  if ($("yt").attr("video") !== undefined) {
-    if ($("yt").attr("user") !== undefined) {
-      $("yt").html("<yt-error>\"user\" and \"video\" cannot be both defined.</yt-error>")
-    } else if ($("yt").attr("channel") !== undefined) {
-      $("yt").html("<yt-error>\"channel\" and \"video\" cannot be both defined.</yt-error>")
-    } else if ($("yt").attr("c") !== undefined) {
-      $("yt").html("<yt-error>\"c\" and \"video\" cannot be both defined.</yt-error>")
-    } else {
-      $("yt").html("<a href='//youtube.com/watch?v=" + $("yt").attr("video") + "'>" + $("yt").attr("video") + "</a>")
-    }
-  }
-  
-  $("yt-error").css("color", "red");
-});
+}
